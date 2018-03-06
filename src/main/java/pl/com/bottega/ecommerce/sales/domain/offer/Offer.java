@@ -59,13 +59,13 @@ public class Offer {
      *            acceptable difference in percent
      * @return
      */
-    public boolean sameAs(Offer seenOffer, double delta) {
+    public boolean sameAs(Offer seenOffer, double delta) { //TODO: 2 podobne metody, moze by sie jednej pozbyc.
         if (availableItems.size() != seenOffer.availableItems.size()) {
             return false;
         }
 
         for (OfferItem item : availableItems) {
-            Product sameItem = seenOffer.findItem(item.getProductId());
+            Product sameItem = seenOffer.findItem(item.getProduct().getProductId());
             if (sameItem == null) {
                 return false;
             }

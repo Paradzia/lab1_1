@@ -57,6 +57,10 @@ public class OfferItem {
         return quantity;
     }
 
+    public Product getProduct() {
+        return product;
+    }
+
     @Override public int hashCode() {
         final int prime = 31;
         int result = 1;
@@ -102,7 +106,7 @@ public class OfferItem {
      * @param delta acceptable percentage difference
      * @return
      */
-    public boolean sameAs(OfferItem other, double delta) {
+    public boolean sameAs(OfferItem other, double delta) {//TODO: 2 podobne metody, moze by sie jednej pozbyc.
 
         if (quantity != other.quantity) {
             return false;
