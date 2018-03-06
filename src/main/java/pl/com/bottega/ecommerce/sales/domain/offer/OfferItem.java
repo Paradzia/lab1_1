@@ -24,26 +24,25 @@ public class OfferItem {
 
     private String currency;
 
+    private Product product;
+
     // discount
 
-
-    public OfferItem(String productId, BigDecimal productPrice, String productName, Date productSnapshotDate,
-            String productType, int quantity) {
-        this(productId, productPrice, productName, productSnapshotDate, productType, quantity, null, null);
+    public OfferItem(Product product, int quantity) {
+        this(product, quantity, null);
     }
 
-    public OfferItem(String productId, BigDecimal productPrice, String productName, Date productSnapshotDate,
-            String productType, int quantity, BigDecimal discount, String discountCause) {
-
+    public OfferItem(Product product, int quantity, Discount discount) {
+        this.product = product;
         this.quantity = quantity;
 
-
         BigDecimal discountValue = new BigDecimal(0);
-        if (discount != null) {
-            discountValue = discountValue.subtract(discount);
+        if (discount.getDiscount() != null) {
+            discountValue = discountValue.subtract(discount.getDiscount());
         }
 
-        this.totalCost = productPrice.multiply(new BigDecimal(quantity)).subtract(discountValue);
+        this.totalCost = product.getProductPrice().multiply(new BigDecimal(quantity))
+                .subtract(discountValue); //TODO: zmienic tego train wrecka
     }
 
     public BigDecimal getTotalCost() {
@@ -53,8 +52,6 @@ public class OfferItem {
     public String getTotalCostCurrency() {
         return currency;
     }
-
-
 
     public int getQuantity() {
         return quantity;
