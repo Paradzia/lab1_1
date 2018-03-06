@@ -5,20 +5,20 @@ import java.util.List;
 
 public class Offer {
 
-    private List<Product> availableItems = new ArrayList<Product>();
+    private List<OfferItem> availableItems = new ArrayList<OfferItem>();
 
-    private List<Product> unavailableItems = new ArrayList<Product>();
+    private List<OfferItem> unavailableItems = new ArrayList<OfferItem>();
 
-    public Offer(List<Product> availabeItems, List<Product> unavailableItems) {
+    public Offer(List<OfferItem> availabeItems, List<OfferItem> unavailableItems) {
         this.availableItems = availabeItems;
         this.unavailableItems = unavailableItems;
     }
 
-    public List<Product> getAvailableItems() {
+    public List<OfferItem> getAvailableItems() {
         return availableItems;
     }
 
-    public List<Product> getUnavailableItems() {
+    public List<OfferItem> getUnavailableItems() {
         return unavailableItems;
     }
 
@@ -64,7 +64,7 @@ public class Offer {
             return false;
         }
 
-        for (Product item : availableItems) {
+        for (OfferItem item : availableItems) {
             Product sameItem = seenOffer.findItem(item.getProductId());
             if (sameItem == null) {
                 return false;
@@ -78,7 +78,7 @@ public class Offer {
     }
 
     private Product findItem(String productId) {
-        for (Product item : availableItems) {
+        for (OfferItem item : availableItems) {
             if (item.getProductId().equals(productId)) {
                 return item;
             }

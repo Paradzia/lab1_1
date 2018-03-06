@@ -25,9 +25,7 @@ public class OfferItem {
     private String currency;
 
     // discount
-    private String discountCause;
 
-    private BigDecimal discount;
 
     public OfferItem(String productId, BigDecimal productPrice, String productName, Date productSnapshotDate,
             String productType, int quantity) {
@@ -38,8 +36,7 @@ public class OfferItem {
             String productType, int quantity, BigDecimal discount, String discountCause) {
 
         this.quantity = quantity;
-        this.discount = discount;
-        this.discountCause = discountCause;
+
 
         BigDecimal discountValue = new BigDecimal(0);
         if (discount != null) {
@@ -57,13 +54,7 @@ public class OfferItem {
         return currency;
     }
 
-    public BigDecimal getDiscount() {
-        return discount;
-    }
 
-    public String getDiscountCause() {
-        return discountCause;
-    }
 
     public int getQuantity() {
         return quantity;
@@ -72,7 +63,6 @@ public class OfferItem {
     @Override public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + (discount == null ? 0 : discount.hashCode());
         result = prime * result + quantity;
         result = prime * result + (totalCost == null ? 0 : totalCost.hashCode());
         return result;
@@ -89,13 +79,13 @@ public class OfferItem {
             return false;
         }
         OfferItem other = (OfferItem) obj;
-        if (discount == null) {
+        /*if (discount == null) {
             if (other.discount != null) {
                 return false;
             }
         } else if (!discount.equals(other.discount)) {
             return false;
-        }
+        }*/
 
         if (quantity != other.quantity) {
             return false;
