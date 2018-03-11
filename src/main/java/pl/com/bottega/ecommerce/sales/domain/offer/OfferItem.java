@@ -61,6 +61,9 @@ public class OfferItem {
         return product;
     }
 
+    public String getProductId(){
+        return this.product.getProductId();
+    }
     @Override public int hashCode() {
         final int prime = 31;
         int result = 1;
